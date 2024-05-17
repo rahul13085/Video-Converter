@@ -2,7 +2,7 @@ import os
 import logging
 from telegram import Update, ForceReply, File
 from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackContext
-from config import BOT_TOKEN, API_ID, API_HASH
+from config import BOT_TOKEN, 26418113, API_HASH
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
