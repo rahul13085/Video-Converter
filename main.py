@@ -1,7 +1,7 @@
 import os
 import logging
 from telegram import Update, ForceReply, File
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackContext
 from config import BOT_TOKEN, API_ID, API_HASH
 
 logging.basicConfig(
@@ -14,7 +14,7 @@ dispatcher = updater.dispatcher
 
 dispatcher.add_handler(CommandHandler("start", start))
 dispatcher.add_handler(CommandHandler("help", help))
-dispatcher.add_handler(MessageHandler(Filters.video & ~Filters.document, process_video))
+dispatcher.add_handler(MessageHandler(filters.video & ~filters.document, process_video))
 
 updater.start_polling()
 updater.idle()
