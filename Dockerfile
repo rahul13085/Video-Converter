@@ -7,6 +7,6 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-RUN curl -L https://johnvansickle.com/ffmpeg/builds/ffmpeg-release-amd64-static.tar.xz | tar -xJf - && mv ffmpeg-release-amd64-static/ffmpeg /usr/local/bin/
+RUN curl -L https://ffmpeg.org/releases/ffmpeg-7.0.tar.xz | tar -xJf - && mv ffmpeg-release-amd64-static/ffmpeg /usr/local/bin/
 
 ENTRYPOINT ["python", "main.py"]
