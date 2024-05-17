@@ -9,7 +9,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-updater = Updater(BOT_TOKEN, use_context=True)
+updater = Updater(BOT_TOKEN)
 dispatcher = updater.dispatcher
 
 dispatcher.add_handler(CommandHandler("start", start))
