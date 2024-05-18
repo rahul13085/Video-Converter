@@ -1,7 +1,8 @@
 import os
 import logging
+import asyncio
 from telegram import Update
-from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackContext, ContextTypes
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
@@ -33,20 +34,21 @@ async def main():
     if loop and loop.is_running():
         logger.info('Asyncio loop is already running. Exiting the script.')
     else:
-    application = Application.builder().token(BOT_TOKEN).build()
+        application = Application.builder().token(BOT_TOKEN).build()
 
-    application.add_handler(CommandHandler("start", start))
-    application.add_handler(CommandHandler("help", help))
-    application.add_handler(MessageHandler(filters.VIDEO & ~filters.Document.ALL, process_video))
+        application.add_handler(CommandHandler("start", start))
+        application.add_handler(CommandHandler("help", help))
+        application.add_handler(MessageHandler(filters.VIDEO & ~filters.Document.ALL, process_video))
 
-    await application.initialize()
-    await application.bot.set_webhook(url=WEBHOOK_URL)
-    await application.run_webhook(
-        listen="0.0.0.0",
-        port=int(WEBHOOK_PORT),
-        url_path=WEBHOOK_URL_PATH,
-        webhook_url=WEBHOOK_URL
-    )
-    await application.shutdown()
+        await application.initialize()
+        await application.bot.set_webhook(url=WEBHOOK_URL)
+        await application.run_webhook(
+            listen="0.0.0.0",
+            port=int(WEBHOOK_PORT),
+            url_path=WEBHOOK_URL_PATH,
+            webhook_url=WEBHOOK_URL
+        )
+        await application.shutdown()
+
 if __name__ == '__main__':
     asyncio.run(main())
