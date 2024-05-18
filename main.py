@@ -1,7 +1,7 @@
 import os
 import logging
 from telegram import Update, ForceReply
-from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackContext
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackContext
 from config import BOT_TOKEN
 
 logging.basicConfig(
@@ -18,14 +18,10 @@ def help(update: Update, context: CallbackContext) -> None:
 def process_video(update: Update, context: CallbackContext) -> None:
     update.message.reply_text('Processing video...')
 
-updater = Updater(BOT_TOKEN)
+application = Application.builder().token(BOT_TOKEN).build()
 
-dispatcher = updater.dispatcher
+application.add_handler(CommandHandler("start", start))
+application.add_handler(CommandHandler("help", help))
+application.add_handler(MessageHandler(filters.VIDEO & ~filters.Document.LALALALALALALALALAL
 
-dispatcher.add_handler(CommandHandler("start", start))
-dispatcher.add_handler(CommandHandler("help", help))
-dispatcher.add_handler(MessageHandler(Filters.video & ~Filters.document, process_video))
-
-updater.start_polling()
-
-updater.idle()
+application.run_polling()
