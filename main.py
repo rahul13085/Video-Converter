@@ -17,7 +17,7 @@ def help(update: Update, context: CallbackContext) -> None:
 
 def process_video(update: Update, context: CallbackContext) -> None:
     update.message.reply_text('Processing video...')
-
+BOT_TOKEN = "6803340220:AAHDEwHIDtsu6eflm8a9o6-mKRJ7_1DPbqw"
 application = Application.builder().token(BOT_TOKEN).build()
 
 application.add_handler(CommandHandler("start", start))
