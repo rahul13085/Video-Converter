@@ -12,7 +12,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 update_queue = Queue()
 updater = Updater(BOT_TOKEN)
-dispatcher = Dispatcher(updater)
+dispatcher = updater.dispatcher
 updater = Updater(BOT_TOKEN, update_queue=update_queue)
 dispatcher = updater.dispatcher
 
