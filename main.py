@@ -19,10 +19,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Hello! Welcome to the bot.')
 
 async def help(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    update.message.reply_text('This is a help message.')
+    await update.message.reply_text('This is a help message.')
 
 async def process_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    update.message.reply_text('Processing video...')
+    await update.message.reply_text('Processing video...')
 
 async def main():
     application = Application.builder().token(BOT_TOKEN).build()
