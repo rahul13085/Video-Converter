@@ -43,4 +43,12 @@ if __name__ == '__main__':
     import asyncio
     async def shutdown():
         await application.shutdown()
+        try:
+        loop = asyncio.get_running_loop()
+    except RuntimeError:
+        loop = None
+
+    if loop and loop.is_running():
+        logger.info('Asyncio loop is already running. Exiting the script.')
+    else:
     asyncio.run(main())
