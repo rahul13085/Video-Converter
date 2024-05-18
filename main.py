@@ -41,9 +41,6 @@ async def main():
     )
     await application.shutdown()
 if __name__ == '__main__':
-    import asyncio
-    async def shutdown():
-        await application.shutdown()
         try:
         loop = asyncio.get_running_loop()
     except RuntimeError:
