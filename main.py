@@ -31,6 +31,7 @@ async def main():
     application.add_handler(CommandHandler("help", help))
     application.add_handler(MessageHandler(filters.VIDEO & ~filters.Document.ALL, process_video))
 
+    await application.initialize()
     await application.bot.set_webhook(url=WEBHOOK_URL)
     await application.run_webhook(
         listen="0.0.0.0",
@@ -38,7 +39,7 @@ async def main():
         url_path=WEBHOOK_URL_PATH,
         webhook_url=WEBHOOK_URL
     )
-
+    await application.shutdown()
 if __name__ == '__main__':
     import asyncio
     async def shutdown():
