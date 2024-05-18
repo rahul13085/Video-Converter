@@ -22,6 +22,6 @@ application = Application.builder().token(BOT_TOKEN).build()
 
 application.add_handler(CommandHandler("start", start))
 application.add_handler(CommandHandler("help", help))
-application.add_handler(MessageHandler(filters.VIDEO & ~filters.Document.LALALALALALALALALAL
+application.add_handler(MessageHandler(filters.VIDEO & ~filters.Document.ALL, process_video))
 
 application.run_polling()
