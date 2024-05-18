@@ -1,14 +1,14 @@
 import os
 import logging
 from telegram import Update, ForceReply
-from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackContext
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackContext, ContextTypes
 from config import BOT_TOKEN
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
 )
 logger = logging.getLogger(__name__)
-
+TOKEN = os.getenv('6803340220:AAHDEwHIDtsu6eflm8a9o6-mKRJ7_1DPbqw')
 def start(update: Update, context: CallbackContext) -> None:
     update.message.reply_text('Hello! Welcome to the bot.')
 
