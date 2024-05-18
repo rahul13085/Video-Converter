@@ -41,4 +41,6 @@ async def main():
 
 if __name__ == '__main__':
     import asyncio
+    async def shutdown():
+        await application.shutdown()
     asyncio.run(main())
