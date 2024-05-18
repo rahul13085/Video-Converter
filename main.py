@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 BOT_TOKEN = '6803340220:AAHDEwHIDtsu6eflm8a9o6-mKRJ7_1DPbqw'
 
 WEBHOOK_HOST = 'video-converter-11.onrender.com'
-WEBHOOK_PORT = os.getenv('PORT', 8443)
+WEBHOOK_PORT = 443
 WEBHOOK_URL_PATH = '/webhook'
 WEBHOOK_URL = f"https://video-converter-11.onrender.com/webhook"
 
