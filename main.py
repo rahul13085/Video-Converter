@@ -49,7 +49,9 @@ if __name__ == '__main__':
         if loop and loop.is_running():
             logger.info('Using existing asyncio loop.')
             nest_asyncio.apply()
-            loop.run_until_complete(main())
+            loop.create_task(main())
+            loop.run_forever()
+            
         else:
             asyncio.run(main())
     except RuntimeError:
