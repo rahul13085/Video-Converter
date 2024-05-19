@@ -41,7 +41,6 @@ async def main():
             url_path=WEBHOOK_URL_PATH,
             webhook_url=WEBHOOK_URL
         )
-        await application.shutdown()
 
 if __name__ == '__main__':
     try:
