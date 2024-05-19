@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 BOT_TOKEN = '6803340220:AAHDEwHIDtsu6eflm8a9o6-mKRJ7_1DPbqw'
 
 WEBHOOK_HOST = 'video-converter-11.onrender.com'
-WEBHOOK_PORT = 443
+WEBHOOK_PORT = 8443
 WEBHOOK_URL_PATH = '/webhook'
 WEBHOOK_URL = f"https://video-converter-11.onrender.com/webhook"
 
@@ -54,5 +54,6 @@ if __name__ == '__main__':
             
         else:
             asyncio.run(main())
-    except RuntimeError:
+    except RuntimeError as e:
+        logger.error(f'RuntimeError encountered: {e}')
         asyncio.run(main())
