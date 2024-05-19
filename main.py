@@ -57,6 +57,7 @@ if __name__ == '__main__':
         else:
             asyncio.get_event_loop().run_until_complete(main())
     except RuntimeError as e:
+        print(f"Error: {e}")
         logger.error(f'RuntimeError encountered: {e}')
     finally:
         loop.close()
