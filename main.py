@@ -26,7 +26,6 @@ async def help(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def process_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Processing video...')
-
 async def main():
         application = Application.builder().token(BOT_TOKEN).build()
 
