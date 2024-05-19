@@ -59,4 +59,5 @@ if __name__ == '__main__':
     except RuntimeError as e:
         logger.error(f'RuntimeError encountered: {e}')
     finally:
-        loop.close()
+        if 'loop' in locals():
+            loop.close()
