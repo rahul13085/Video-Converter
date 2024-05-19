@@ -5,6 +5,7 @@ import nest_asyncio
 import tracemalloc
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+
 tracemalloc.start()
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
@@ -26,13 +27,15 @@ async def help(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def process_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Processing video...')
+
 async def main():
-        application = Application.builder().token(BOT_TOKEN).build()
+    application = Application.builder().token(BOT_TOKEN).build()
 
-        application.add_handler(CommandHandler("start", start))
-        application.add_handler(CommandHandler("help", help))
-        application.add_handler(MessageHandler(filters.VIDEO & ~filters.Document.ALL, process_video))
+    application.add_handler(CommandHandler("start", start))
+    application.add_handler(CommandHandler("help", help))
+    application.add_handler(MessageHandler(filters.VIDEO & ~filters.Document.ALL, process_video))
 
+    try:
         await application.initialize()
         await application.bot.set_webhook(url=WEBHOOK_URL)
         await application.run_webhook(
