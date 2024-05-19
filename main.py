@@ -2,9 +2,10 @@ import os
 import logging
 import asyncio
 import nest_asyncio
+import tracemalloc
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
-
+tracemalloc.start()
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
 )
