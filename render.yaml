@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: video-converter-bot
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python src/main.py
+    envVars:
+      - key: BOT_TOKEN
+        value: 6803340220:AAHDEwHIDtsu6eflm8a9o6-mKRJ7_1DPbqw
+      - key: WEBHOOK_HOST
+        value: video-converter-11.onrender.com
+      - key: PORT
+        value: 443
