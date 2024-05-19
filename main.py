@@ -48,8 +48,8 @@ async def main():
         await application.shutdown()
 
 if __name__ == '__main__':
-    loop = asyncio.get_event_loop()
     try:
+        loop = asyncio.get_event_loop()
         if loop.is_running():
             logger.info('Asyncio loop is already running.')
             nest_asyncio.apply()
@@ -57,7 +57,6 @@ if __name__ == '__main__':
         else:
             asyncio.get_event_loop().run_until_complete(main())
     except RuntimeError as e:
-        print(f"Error: {e}")
         logger.error(f'RuntimeError encountered: {e}')
     finally:
         loop.close()
