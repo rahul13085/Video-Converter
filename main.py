@@ -14,10 +14,10 @@ logger = logging.getLogger(__name__)
 
 BOT_TOKEN = '6803340220:AAHDEwHIDtsu6eflm8a9o6-mKRJ7_1DPbqw'
 
-WEBHOOK_HOST = 'video-converter-11.onrender.com'
+WEBHOOK_HOST = 'video-converter-11-0l9p.onrender.com'
 WEBHOOK_PORT = 8443
 WEBHOOK_URL_PATH = '/webhook'
-WEBHOOK_URL = f"https://video-converter-11.onrender.com/webhook"
+WEBHOOK_URL = f"https://video-converter-11-0l9p.onrender.com/webhook"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Hello! Welcome to the bot.')
