@@ -1,6 +1,7 @@
 import os
 import logging
 import asyncio
+import nest_asyncio
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
@@ -47,6 +48,7 @@ if __name__ == '__main__':
         loop = asyncio.get_running_loop()
         if loop and loop.is_running():
             logger.info('Using existing asyncio loop.')
+            nest_asyncio.apply()
             loop.run_until_complete(main())
         else:
             asyncio.run(main())
