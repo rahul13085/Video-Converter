@@ -26,14 +26,6 @@ async def process_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Processing video...')
 
 async def main():
-    try:
-        loop = asyncio.get_running_loop()
-    except RuntimeError:
-        loop = None
-
-    if loop and loop.is_running():
-        logger.info('Asyncio loop is already running. Exiting the script.')
-    else:
         application = Application.builder().token(BOT_TOKEN).build()
 
         application.add_handler(CommandHandler("start", start))
@@ -51,4 +43,12 @@ async def main():
         await application.shutdown()
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    try:
+        loop = asyncio.get_running_loop()
+        if loop and loop.is_running():
+            logger.info('Using existing asyncio loop.')
+            loop.run_until_complete(main())
+        else:
+            asyncio.run(main())
+    except RuntimeError:
+        asyncio.run(main())
